@@ -28,12 +28,13 @@ void SpeechManager::exitSystem() {
 	exit(0);
 }
 
+//初始化容器
 void SpeechManager::initSpeech() {
 	//容器保证为空
 	this->v1.clear();
 	this->v2.clear();
 	this->vVictory.clear();
-	this->m_Speaker.clear();
+	this->m_Speaker.clear();   //<int,Speaker>
 
 	//初始化比赛轮数
 	this->m_Index = 1;
@@ -41,7 +42,7 @@ void SpeechManager::initSpeech() {
 	//初始化记录容器
 	this->m_Record.clear();
 }
-
+//初始化选手
 void SpeechManager::createSpeaker() {
 	string nameSeed = "ABCDEFGHIJKL";
 	for (int i = 0; i < nameSeed.size(); i++) {
@@ -49,10 +50,10 @@ void SpeechManager::createSpeaker() {
 		name += nameSeed[i];
 
 
-		Speaker sp;
+		Speaker sp;   //Speaker(name,score[2])
 		sp.m_Name = name;
 		for (int i = 0; i < 2; i++) {
-			sp.m_Score[i] = 0;
+			sp.m_Score[i] = 0;   //初始化分数0
 		}
 
 		//12名选手编号
@@ -68,7 +69,7 @@ void SpeechManager::speechDraw() {
 	cout << "----------------------" << endl;
 	cout << "抽签后演讲顺序如下：" << endl;
 	if (this->m_Index == 1) {
-		random_shuffle(v1.begin(), v1.end());
+		random_shuffle(v1.begin(), v1.end());  //打乱选手
 		for (vector<int>::iterator it = v1.begin(); it != v1.end(); it++) {
 			cout << *it << " ";
 		}
