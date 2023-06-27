@@ -5,6 +5,8 @@
 #include<map>
 #include<deque>
 #include<algorithm>
+#include<numeric>
+#include<fstream>
 using  namespace std;
 
 //演讲管理类
@@ -24,6 +26,12 @@ class SpeechManager {
 
 	//比赛轮数
 	int m_Index;
+
+	bool fileIsEmpty;
+
+	map<int, vector<string>> m_Record;
+
+
 public:
 	//构造函数
 	SpeechManager();
@@ -41,6 +49,17 @@ public:
 	void speechDraw();//抽签
 
 	void speechContest();//比赛
+
+	void showScore();//显示比赛结果
+
+	void saveRecord();//保存记录
+
+	void loadReacord();
+
+	void showRecord();
+
+	void clearRecord();
+
 	//析构函数
 	~SpeechManager();
 };
